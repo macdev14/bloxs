@@ -3,7 +3,7 @@
 Desafio Técnico - Bloxs
 
 ## Visão Geral
-Front-end e Backend
+[Front-end](https://github.com/macdev14/bloxs-frontend) e [Backend](https://github.com/macdev14/bloxs-backend)
 
 ## Requisitos
 
