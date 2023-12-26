@@ -1,0 +1,53 @@
+# Nome do Projeto
+
+Desafio Técnico - Bloxs
+
+## Visão Geral
+Front-end e Backend
+
+## Requisitos
+
+- Docker
+
+## Instalação
+
+1.**Baixe ou crie um o docker-compose.yml e copie**
+```bash
+version: "2"
+services:
+  frontend-bloxs:
+    image: lmtp/frontend:latest
+    environment:
+      PORT: 3000
+    ports:
+      - 3000:3000
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_USERNAME: root
+      MYSQL_DATABASE: bloxs
+
+  backend-bloxs:
+    image: lmtp/backend:latest
+    ports:
+      - "5000:5000"
+    depends_on:
+      wait-for-db:
+        condition: service_completed_successfully  
+    command: sh -c "flask db upgrade && flask run -h 0.0.0.0 -p 5000"
+
+  wait-for-db:
+    image: atkrad/wait4x
+    depends_on:
+      - db
+    command: tcp host.docker.internal:3306 -t 60s -i 1250ms    
+```
+
+2. **Execute o docker-compose:**
+
+```bash
+    docker-compose -f docker-compose.yml up
+```
