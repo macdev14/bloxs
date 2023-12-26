@@ -1,6 +1,5 @@
-# Nome do Projeto
+# Desafio Técnico - Bloxs
 
-Desafio Técnico - Bloxs
 
 ## Visão Geral
 [Front-end](https://github.com/macdev14/bloxs-frontend) e [Backend](https://github.com/macdev14/bloxs-backend)
